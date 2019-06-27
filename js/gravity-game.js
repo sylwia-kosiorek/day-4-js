@@ -19,7 +19,7 @@ function applyStylesToAlienAndPlanet() {
 
     planetElement.style.width='100%'
     planetElement.style.height='300px'
-    planetElement.style.posiotion= 'relative'
+    planetElement.style.position= 'relative'
     planetElement.style.backgroundColor = 'grey'
 
     planetElement.appendChild(alienElement)

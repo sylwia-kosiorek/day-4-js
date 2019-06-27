@@ -1,4 +1,6 @@
-const containerElement = document.querySelector('.car-game')
+function carGame(selector) {
+
+const containerElement = document.querySelector(selector)
 const carElement = document.createElement('div')
 const roadElement = document.createElement('div')
 const tickDuration = 10
@@ -65,3 +67,4 @@ window.addEventListener(
       }
     }
   )
+}
