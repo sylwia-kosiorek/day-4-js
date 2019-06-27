@@ -1,4 +1,6 @@
-const containerElement = document.querySelector('.gravity-game')
+(function (){
+
+    const containerElement = document.querySelector('[data-game="gravity"]')
 const alienElement = document.createElement('div')
 const planetElement = document.createElement('div')
 
@@ -27,3 +29,5 @@ function applyStylesToAlienAndPlanet() {
 }
 
 applyStylesToAlienAndPlanet()
+
+})()
