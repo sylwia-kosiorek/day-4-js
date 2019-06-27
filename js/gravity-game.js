@@ -1,10 +1,12 @@
 (function (){
 
-    const containerElement = document.querySelector('[data-game="gravity"]')
+const containerElement = document.querySelector('[data-game="gravity"]')
 const alienElement = document.createElement('div')
 const planetElement = document.createElement('div')
 
 const earthGravityAcceleration = -9.81
+const initialVelocity = 20
+const tickDuration = 10
 
 let position = 0
 let velocity = 0
@@ -28,6 +30,29 @@ function applyStylesToAlienAndPlanet() {
     containerElement.appendChild(planetElement)
 }
 
+function move () {
+    const time = tickDuration / 1000
+
+    const newPosition = position + velocity * time + (earthGravityAcceleration * time * time) / 2
+    const newVelocity = velocity + earthGravityAcceleration * time
+    position = Math.max(0, newPosition)
+    velocity = position === 0 ? 0 : newVelocity
+
+    alienElement.style.bottom = position + 'px'
+}
+
 applyStylesToAlienAndPlanet()
+
+window.addEventListener(
+    'keydown',
+    function () {
+        velocity = initialVelocity
+    }
+)
+
+setInterval(
+    move,
+    tickDuration
+)
 
 })()
