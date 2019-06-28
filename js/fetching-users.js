@@ -37,6 +37,13 @@
   }
 
   function render() {
+    mainContainerElement.innerText =''
+
+    if(users.length === 0) {
+      mainContainerElement.innerText = 'Loading'
+
+      return
+    }
 
     for (let i = 0; i < users.length; i++) {
       const user = users[i]
