@@ -1,17 +1,18 @@
 function carGame(selector) {
 
-const containerElement = document.querySelector(selector)
-const carElement = document.createElement('div')
-const roadElement = document.createElement('div')
-const tickDuration = 10
-const maxAcceleration = 10
+  const containerElement = document.querySelector(selector)
 
-let velocity = 0
-let acceleration = 0
-let position = 0
+  const roadElement = document.createElement('div')
+  const carElement = document.createElement('div')
 
+  const tickDuration = 10
+  const maxAcceleration = 10
 
-function applyStylesToCarAndRoad() {
+  let velocity = 0
+  let acceleration = 0
+  let position = 0
+
+  function applyStylesToCarAndRoad() {
     carElement.className = 'car-game__car-element'
 
     carElement.style.width = '100px'
@@ -21,30 +22,32 @@ function applyStylesToCarAndRoad() {
     carElement.style.position = 'absolute'
     carElement.style.left = position + 'px'
 
-    roadElement.style.width='100%'
-    roadElement.style.height='100px'
-    roadElement.style.posiotion= 'relative'
-    roadElement.style.backgroundColor = 'grey'
+    roadElement.style.width = '100%'
+    roadElement.style.height = '100px'
+    roadElement.style.position = 'relative'
+    roadElement.style.backgroundColor = 'gray'
 
     roadElement.appendChild(carElement)
     containerElement.appendChild(roadElement)
-}
+  }
 
-function move() {
+  function move() {
     const time = tickDuration / 1000
+
     position = position + velocity * time + (acceleration * time * time) / 2
     velocity = velocity + acceleration * time
+
     carElement.style.left = position + 'px'
-}
+  }
 
-applyStylesToCarAndRoad()
+  applyStylesToCarAndRoad()
 
-setInterval(
+  setInterval(
     move,
     tickDuration
-)
+  )
 
-window.addEventListener(
+  window.addEventListener(
     'keydown',
     function (event) {
       if (event.key === 'a') {
@@ -55,7 +58,7 @@ window.addEventListener(
       }
     }
   )
-  
+
   window.addEventListener(
     'keyup',
     function (event) {
@@ -67,4 +70,5 @@ window.addEventListener(
       }
     }
   )
+
 }
